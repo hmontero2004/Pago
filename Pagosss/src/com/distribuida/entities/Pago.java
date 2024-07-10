@@ -23,9 +23,6 @@ public class Pago {
 	@Column(name = "id_pago")
     private int idPago;
 
-    @Column(name = "IdPedido")
-    private int pedido;
-
     @Column(name = "FechaPago")
     private Date fechaPago;
 
@@ -39,73 +36,82 @@ public class Pago {
 	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private TipoPago tipoPago;
 	
+    
+ // inyeccion
+	
+    @Column(name = "IdPedido")
+    private int idpedido;
+    //
+//    @JoinColumn(name = "id_pedido")
+//	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+//    private Pedido pedido;
+    
 	public Pago () {    }
 
-
-	public Pago(int idPago, int pedido, Date fechaPago, int idTipoPago, double monto) {
+	public Pago(int idPago, Date fechaPago, double monto ) {
 		this.idPago = idPago;
-		this.pedido = pedido;
+		//this.idpedido = idpedido;
 		this.fechaPago = fechaPago;
-		this.idTipoPago = idTipoPago;
+		//this.idTipoPago = idTipoPago;
 		this.monto = monto;
+		//this.tipoPago = tipoPago;
 	}
-
 
 	public int getIdPago() {
 		return idPago;
 	}
 
-
 	public void setIdPago(int idPago) {
 		this.idPago = idPago;
 	}
 
-
-	public int getPedido() {
-		return pedido;
+	public int getIdpedido() {
+		return idpedido;
 	}
 
-
-	public void setPedido(int pedido) {
-		this.pedido = pedido;
+	public void setIdpedido(int idpedido) {
+		this.idpedido = idpedido;
 	}
-
 
 	public Date getFechaPago() {
 		return fechaPago;
 	}
 
-
 	public void setFechaPago(Date fechaPago) {
 		this.fechaPago = fechaPago;
 	}
-
 
 	public int getIdTipoPago() {
 		return idTipoPago;
 	}
 
-
 	public void setIdTipoPago(int idTipoPago) {
 		this.idTipoPago = idTipoPago;
 	}
-
 
 	public double getMonto() {
 		return monto;
 	}
 
-
 	public void setMonto(double monto) {
 		this.monto = monto;
 	}
 
+	public TipoPago getTipoPago() {
+		return tipoPago;
+	}
+
+	public void setTipoPago(TipoPago tipoPago) {
+		this.tipoPago = tipoPago;
+	}
 
 	@Override
 	public String toString() {
-		return "Pago [idPago=" + idPago + ", pedido=" + pedido + ", fechaPago=" + fechaPago + ", idTipoPago="
-				+ idTipoPago + ", monto=" + monto + "]";
+		return "Pago [idPago=" + idPago + ", idpedido=" + idpedido + ", fechaPago=" + fechaPago + ", idTipoPago="
+				+ idTipoPago + ", monto=" + monto + ", tipoPago=" + tipoPago + "]";
 	}
+
+
 	
 	
 }

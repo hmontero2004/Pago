@@ -20,9 +20,11 @@ public class TipoPago {
 
     @Column(name = "Tipo")
     private String tipo;
+    
+    public TipoPago(){};
 
 	public TipoPago(int idTipoPago, String tipo) {
-		super();
+		
 		this.idTipoPago = idTipoPago;
 		this.tipo = tipo;
 	}
@@ -47,7 +49,7 @@ public class TipoPago {
 	public String toString() {
 		return "TipoPago [idTipoPago=" + idTipoPago + ", tipo=" + tipo + "]";
 	}
+
 	
-    
     
 }

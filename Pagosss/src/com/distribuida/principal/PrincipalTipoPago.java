@@ -14,11 +14,29 @@ public class PrincipalTipoPago  {
 		// TODO Auto-generated method stub
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		TipoPagoDAO tipoPagoDAO = context.getBean("tipoPagoDAOImpl",TipoPagoDAO.class);
-		List<TipoPago> tipoPago = tipoPagoDAO.findALL();
-		tipoPago.forEach(item -> {
-			System.out.println(item.toString());
-		});
+		
+		//add
+		TipoPago tipoPago = new TipoPago(0, "Pichincha");
+		tipoPagoDAO.add(tipoPago);
+		
+		//up
+		//TipoPago tipoPago2 = new TipoPago(6, "produbanco");
+		//tipoPagoDAO.up(tipoPago2);
+		
+		//del
+		//tipoPagoDAO.del(6);
+		//finone
+		System.out.print("*******************DEL***************"+tipoPagoDAO.findOne(6));
+		try {System.out.print("*****************DEL****************"+tipoPagoDAO.findOne(6));} catch(Exception e) {e.printStackTrace();}
+
+		//finall
+		List<TipoPago> tipoPagos = tipoPagoDAO.findALL();
+		
+		
+		tipoPagos.forEach(item -> {
+			System.out.println(item.toString());});
 				context.close();
 	}
 
 }
+
