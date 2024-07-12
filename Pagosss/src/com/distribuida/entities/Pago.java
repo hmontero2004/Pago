@@ -13,48 +13,49 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
+
 @Component
 @Entity
-@Table (name="pagos")
+@Table(name = "pagos")
 public class Pago {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_pago")
-    private int idPago;
+	private int idPago;
 
-    @Column(name = "FechaPago")
-    private Date fechaPago;
+	@Column(name = "IdPedido")
+	private int idPedido;
 
-    @Column(name = "IdTipoPago")
-    private int idTipoPago;
+	@Column(name = "FechaPago")
+	private Date fechaPago;
 
-    @Column(name = "Monto")
-    private double monto;
-	
-    @JoinColumn(name = "id_tipo_pago")
-	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    private TipoPago tipoPago;
-	
-    
- // inyeccion
-	
-    @Column(name = "IdPedido")
-    private int idpedido;
-    //
+	@Column(name = "IdTipoPago")
+	private int idTipoPago;
+
+	@Column(name = "Monto")
+	private double monto;
+
+	// @JoinColumn(name = "id_tipo_pago")
+	// @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
+	// CascadeType.PERSIST, CascadeType.REFRESH})
+	// private TipoPago tipoPago;
+
+	//
 //    @JoinColumn(name = "id_pedido")
 //	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 //    private Pedido pedido;
-    
-	public Pago () {    }
 
-	public Pago(int idPago, Date fechaPago, double monto ) {
+	public Pago() {
+	}
+
+	public Pago(int idPago, int idPedido, Date fechaPago, int idTipoPago, double monto) {
+		super();
 		this.idPago = idPago;
-		//this.idpedido = idpedido;
+		this.idPedido = idPedido;
 		this.fechaPago = fechaPago;
-		//this.idTipoPago = idTipoPago;
+		this.idTipoPago = idTipoPago;
 		this.monto = monto;
-		//this.tipoPago = tipoPago;
 	}
 
 	public int getIdPago() {
@@ -65,12 +66,12 @@ public class Pago {
 		this.idPago = idPago;
 	}
 
-	public int getIdpedido() {
-		return idpedido;
+	public int getIdPedido() {
+		return idPedido;
 	}
 
-	public void setIdpedido(int idpedido) {
-		this.idpedido = idpedido;
+	public void setIdPedido(int idPedido) {
+		this.idPedido = idPedido;
 	}
 
 	public Date getFechaPago() {
@@ -97,21 +98,10 @@ public class Pago {
 		this.monto = monto;
 	}
 
-	public TipoPago getTipoPago() {
-		return tipoPago;
-	}
-
-	public void setTipoPago(TipoPago tipoPago) {
-		this.tipoPago = tipoPago;
-	}
-
 	@Override
 	public String toString() {
-		return "Pago [idPago=" + idPago + ", idpedido=" + idpedido + ", fechaPago=" + fechaPago + ", idTipoPago="
-				+ idTipoPago + ", monto=" + monto + ", tipoPago=" + tipoPago + "]";
+		return "Pago [idPago=" + idPago + ", idPedido=" + idPedido + ", fechaPago=" + fechaPago + ", idTipoPago="
+				+ idTipoPago + ", monto=" + monto + "]";
 	}
 
-
-	
-	
 }
